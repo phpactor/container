@@ -1,0 +1,29 @@
+{
+    "name": "phpactor/container",
+    "description": "Phpactor's DI Container",
+    "type": "library",
+    "require": {
+        "symfony/options-resolver": "^4.1",
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Leech",
+            "email": "daniel@dantleech.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Phpactor\\Container\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phpactor\\Container\\Tests\\": "tests/"
+        }
+    }
+}
