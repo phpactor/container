@@ -9,7 +9,7 @@ interface Extension
     /**
      * Register services with the container.
      *
-     * @param Container $container
+     * @param ContainerBuilder $container
      */
     public function load(ContainerBuilder $container);
 
