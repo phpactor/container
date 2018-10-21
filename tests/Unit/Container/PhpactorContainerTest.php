@@ -3,6 +3,10 @@
 namespace Phpactor\Tests\Unit\Container;
 
 use PHPUnit\Framework\TestCase;
+use Phpactor\Container\ContainerBuilder;
+use Phpactor\Container\Extension;
+use Phpactor\MapResolver\Resolver;
+use Prophecy\Argument;
 use RuntimeException;
 use Phpactor\Container\PhpactorContainer;
 use stdClass;
@@ -21,6 +25,29 @@ class PhpactorContainerTest extends TestCase
             'configKey1' => 'value1',
             'nullKey' => null,
         ]);
+    }
+
+    public function testFromExtensions()
+    {
+        $extension1 = new class implements Extension {
+            public function configure(Resolver $resolver) {
+                $resolver->setDefaults([
+                    'foo' => 'bar'
+                ]);
+            }
+
+            public function load(ContainerBuilder $builder) {
+                $builder->register('stdclass', function () {
+                    return new stdClass();
+                });
+            }
+        };
+        $container = PhpactorContainer::fromExtensions([ get_class($extension1) ], [
+            'foo' => 'foo',
+        ]);
+        $this->assertInstanceOf(Container::class, $container);
+        $this->assertEquals('foo', $container->getParameter('foo'));
+        $this->assertInstanceOf(stdClass::class, $container->get('stdclass'));
     }
 
     public function testThrowsExceptionForUnknownService()

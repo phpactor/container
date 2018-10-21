@@ -3,6 +3,7 @@
 namespace Phpactor\Container;
 
 use Closure;
+use Phpactor\MapResolver\Resolver;
 use RuntimeException;
 
 class PhpactorContainer implements Container, ContainerBuilder
@@ -30,6 +31,28 @@ class PhpactorContainer implements Container, ContainerBuilder
     public function __construct(array $parameters = [])
     {
         $this->parameters = $parameters;
+    }
+
+    public static function fromExtensions(array $extensionClasses, array $parameters = []): Container
+    {
+        $container = new self();
+
+        $extensions = array_map(function (string $class) {
+            return new $class;
+        }, $extensionClasses);
+
+        $resolver = new Resolver();
+        foreach ($extensions as $extension) {
+            $extension->configure($resolver);
+        }
+
+        $parameters = $resolver->resolve($parameters);
+
+        foreach ($extensions as $extension) {
+            $extension->load($container);
+        }
+
+        return $container->build($parameters);
     }
 
     /**
