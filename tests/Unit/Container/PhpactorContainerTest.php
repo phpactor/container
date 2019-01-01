@@ -42,12 +42,18 @@ class PhpactorContainerTest extends TestCase
                 });
             }
         };
-        $container = PhpactorContainer::fromExtensions([ get_class($extension1) ], [
+        $container = PhpactorContainer::fromExtensions([
+            get_class($extension1)
+        ], [
             'foo' => 'foo',
         ]);
         $this->assertInstanceOf(Container::class, $container);
         $this->assertEquals('foo', $container->getParameter('foo'));
         $this->assertInstanceOf(stdClass::class, $container->get('stdclass'));
+
+        $this->assertEquals([
+            get_class($extension1)
+        ], $container->getParameter('container.extension_classes'));
     }
 
     public function testThrowsExceptionForUnknownService()

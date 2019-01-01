@@ -8,6 +8,8 @@ use RuntimeException;
 
 class PhpactorContainer implements Container, ContainerBuilder
 {
+    const PARAM_EXTENSION_CLASSES = 'container.extension_classes';
+
     /**
      * @var array
      */
@@ -42,6 +44,9 @@ class PhpactorContainer implements Container, ContainerBuilder
         }, $extensionClasses);
 
         $resolver = new Resolver();
+        $resolver->setDefaults([
+            self::PARAM_EXTENSION_CLASSES => $extensionClasses
+        ]);
         foreach ($extensions as $extension) {
             $extension->configure($resolver);
         }
