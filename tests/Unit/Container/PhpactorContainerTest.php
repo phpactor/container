@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Phpactor\Container\ContainerBuilder;
 use Phpactor\Container\Extension;
 use Phpactor\MapResolver\Resolver;
-use Prophecy\Argument;
 use RuntimeException;
 use Phpactor\Container\PhpactorContainer;
 use stdClass;
@@ -30,13 +29,15 @@ class PhpactorContainerTest extends TestCase
     public function testFromExtensions()
     {
         $extension1 = new class implements Extension {
-            public function configure(Resolver $resolver) {
+            public function configure(Resolver $resolver)
+            {
                 $resolver->setDefaults([
                     'foo' => 'bar'
                 ]);
             }
 
-            public function load(ContainerBuilder $builder) {
+            public function load(ContainerBuilder $builder)
+            {
                 $builder->register('stdclass', function () {
                     return new stdClass();
                 });

@@ -1,13 +1,15 @@
 {
-    "name": "phpactor/container",
+    "name": "phpactor\/container",
     "description": "Phpactor's DI Container",
     "type": "library",
     "require": {
-        "psr/container": "^1.0",
-        "phpactor/map-resolver": "^1.0"
+        "psr\/container": "^1.0",
+        "phpactor\/map-resolver": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.3"
+        "phpunit\/phpunit": "~7.0",
+        "friendsofphp\/php-cs-fixer": "~2.15.0",
+        "phpstan\/phpstan": "~0.11.0"
     },
     "license": "MIT",
     "authors": [
@@ -18,12 +20,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Phpactor\\Container\\": "lib/"
+            "Phpactor\\Container\\": "lib\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Phpactor\\Container\\Tests\\": "tests/"
+            "Phpactor\\Container\\Tests\\": "tests\/"
         }
     }
 }
