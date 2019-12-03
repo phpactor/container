@@ -98,7 +98,7 @@ class PhpactorContainer implements Container, ContainerBuilder
         return $this->tags[$tag];
     }
 
-    public function register(string $serviceId, Closure $factory, array $tags = [])
+    public function register(string $serviceId, Closure $factory, array $tags = []): void
     {
         $this->factories[$serviceId] = $factory;
 

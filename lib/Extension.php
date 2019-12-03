@@ -9,14 +9,14 @@ interface Extension
     /**
      * Register services with the container.
      *
-     * @param ContainerBuilder $container
+     * @return void
      */
     public function load(ContainerBuilder $container);
 
     /**
      * Return the default parameters for the container.
      *
-     * @return array
+     * @return void
      */
     public function configure(Resolver $schema);
 }
