@@ -6,6 +6,8 @@ use Psr\Container\ContainerInterface;
 
 interface Container extends ContainerInterface
 {
+    public function getServiceIds(): array;
+
     public function getServiceIdsForTag(string $tag): array;
 
     public function getParameter(string $name);

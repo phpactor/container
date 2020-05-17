@@ -28,7 +28,7 @@ class PhpactorContainer implements Container, ContainerBuilder
     /**
      * @var array
      */
-    private $services;
+    private $services = [];
 
     public function __construct(array $parameters = [])
     {
@@ -134,5 +134,13 @@ class PhpactorContainer implements Container, ContainerBuilder
     public function getParameters(): array
     {
         return $this->parameters;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getServiceIds(): array
+    {
+        return array_keys($this->factories);
     }
 }

@@ -28,5 +28,12 @@
         "psr-4": {
             "Phpactor\\Container\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "integrate": [
+            "vendor/bin/php-cs-fixer fix",
+            "vendor/bin/phpstan analyse lib -c phpstan.neon",
+            "vendor/bin/phpunit"
+        ]
     }
 }

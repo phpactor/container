@@ -138,4 +138,13 @@ class PhpactorContainerTest extends TestCase
         $this->assertInstanceOf(Container::class, $container);
         $this->assertEquals('goodbye', $container->getParameter('hello'));
     }
+
+    public function testReturnsServiceIds()
+    {
+        $this->container->register('foobar', function (Container $container) {
+            return new stdClass();
+        }, [ 'foobar' => []]);
+
+        self::assertEquals(['foobar'], $this->container->getServiceIds());
+    }
 }
