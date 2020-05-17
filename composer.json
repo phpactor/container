@@ -29,6 +29,11 @@
             "Phpactor\\Container\\Tests\\": "tests/"
         }
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.3.x-dev"
+        }
+    },
     "scripts": {
         "integrate": [
             "vendor/bin/php-cs-fixer fix",
