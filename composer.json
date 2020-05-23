@@ -2,6 +2,8 @@
     "name": "phpactor/container",
     "description": "Phpactor's DI Container",
     "type": "library",
+    "minimum-stability":"dev",
+    "prefer-stable":true,
     "require": {
         "php": "^7.3",
         "psr/container": "^1.0",
