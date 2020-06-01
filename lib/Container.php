@@ -7,7 +7,9 @@ use Psr\Container\ContainerInterface;
 interface Container extends ContainerInterface
 {
     /**
-     * @return array<string>
+     * Return array of serviceId to tag names and attributes
+     *
+     * @return array<string,array<string,array>>
      */
     public function getServiceIdsForTag(string $tag): array;
 
@@ -22,14 +24,14 @@ interface Container extends ContainerInterface
     public function getParameters(): array;
 
     /**
-     * Return all tags for the container (for introspection)
+     * Return all tags for the container
      *
      * @return array<string, array<string, array>>
      */
     public function getTags(): array;
 
     /**
-     * Return all service IDs (for introspection)
+     * Return all service IDs
      *
      * @return array<string>
      */
