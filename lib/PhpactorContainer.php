@@ -13,7 +13,7 @@ class PhpactorContainer implements Container, ContainerBuilder
     /**
      * @var array
      */
-    private $tags;
+    private $tags = [];
 
     /**
      * @var array
@@ -142,5 +142,13 @@ class PhpactorContainer implements Container, ContainerBuilder
     public function getServiceIds(): array
     {
         return array_keys($this->factories);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTags(): array
+    {
+        return $this->tags;
     }
 }

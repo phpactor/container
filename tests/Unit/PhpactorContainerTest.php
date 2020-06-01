@@ -147,4 +147,23 @@ class PhpactorContainerTest extends TestCase
 
         self::assertEquals(['foobar'], $this->container->getServiceIds());
     }
+
+    public function testReturnsTags()
+    {
+        $this->container->register('foobar', function (Container $container) {
+            return new stdClass();
+        }, [ 'foobar' => [
+            'foo' => 'bar',
+        ]]);
+        $this->container->register('barfoo', function (Container $container) {
+            return new stdClass();
+        }, [ 'foobar' => [
+            'bar' => 'foo',
+        ]]);
+
+        self::assertEquals(['foobar' => [
+            'foobar' => ['foo' => 'bar'],
+            'barfoo' => ['bar' => 'foo'],
+        ]], $this->container->getTags());
+    }
 }
