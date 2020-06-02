@@ -9,7 +9,7 @@ interface Container extends ContainerInterface
     /**
      * Return array of serviceId to tag names and attributes
      *
-     * @return array<string,array<string,array>>
+     * @return array<string,array<string,mixed>>
      */
     public function getServiceIdsForTag(string $tag): array;
 
