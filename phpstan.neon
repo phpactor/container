@@ -5,4 +5,5 @@ parameters:
     ignoreErrors: null
     paths:
         - lib
-    level: '7'
+        - lib
+    level: 7
