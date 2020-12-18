@@ -2,8 +2,8 @@
     "name": "phpactor/container",
     "description": "Phpactor's DI Container",
     "type": "library",
-    "minimum-stability":"dev",
-    "prefer-stable":true,
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^7.3||^8.0",
         "psr/container": "^1.0",
@@ -12,7 +12,7 @@
     "require-dev": {
         "phpunit/phpunit": "~7.0",
         "friendsofphp/php-cs-fixer": "~2.15.0",
-        "phpstan/phpstan": "~0.11.0"
+        "phpstan/phpstan": "~0.12.0"
     },
     "license": "MIT",
     "authors": [
