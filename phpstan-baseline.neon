@@ -1,0 +1,62 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Phpactor\\\\Container\\\\ContainerBuilder\\:\\:register\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: lib/ContainerBuilder.php
+
+		-
+			message: "#^Method Phpactor\\\\Container\\\\ContainerBuilder\\:\\:register\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/ContainerBuilder.php
+
+		-
+			message: "#^Method Phpactor\\\\Container\\\\ContainerBuilder\\:\\:build\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/ContainerBuilder.php
+
+		-
+			message: "#^Property Phpactor\\\\Container\\\\PhpactorContainer\\:\\:\\$tags type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Property Phpactor\\\\Container\\\\PhpactorContainer\\:\\:\\$parameters type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Property Phpactor\\\\Container\\\\PhpactorContainer\\:\\:\\$factories type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Property Phpactor\\\\Container\\\\PhpactorContainer\\:\\:\\$services type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Method Phpactor\\\\Container\\\\PhpactorContainer\\:\\:__construct\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Method Phpactor\\\\Container\\\\PhpactorContainer\\:\\:fromExtensions\\(\\) has parameter \\$extensionClasses with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Method Phpactor\\\\Container\\\\PhpactorContainer\\:\\:fromExtensions\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Method Phpactor\\\\Container\\\\PhpactorContainer\\:\\:register\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
+		-
+			message: "#^Method Phpactor\\\\Container\\\\PhpactorContainer\\:\\:build\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/PhpactorContainer.php
+
