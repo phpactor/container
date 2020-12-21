@@ -18,7 +18,7 @@ class PhpactorContainerTest extends TestCase
      */
     private $container;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->container = new PhpactorContainer([
             'configKey1' => 'value1',
