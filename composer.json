@@ -1,19 +1,7 @@
 {
     "name": "phpactor/container",
-    "description": "Phpactor's DI Container",
     "type": "library",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "php": "^7.3||^8.0",
-        "psr/container": "^1.0",
-        "phpactor/map-resolver": "^1.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~7.0",
-        "friendsofphp/php-cs-fixer": "~2.15.0",
-        "phpstan/phpstan": "~0.12.0"
-    },
+    "description": "Phpactor's DI Container",
     "license": "MIT",
     "authors": [
         {
@@ -21,6 +9,22 @@
             "email": "daniel@dantleech.com"
         }
     ],
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "phpactor/map-resolver": "^1.3",
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "phpstan/phpstan": "~0.12.0",
+        "phpunit/phpunit": "~7.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.3.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Phpactor\\Container\\": "lib/"
@@ -31,11 +35,8 @@
             "Phpactor\\Container\\Tests\\": "tests/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.3.x-dev"
-        }
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "integrate": [
             "vendor/bin/php-cs-fixer fix",
