@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpactor\Tests\Unit\Container;
+namespace Phpactor\Container\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Phpactor\Container\ContainerBuilder;
