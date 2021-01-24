@@ -26,17 +26,17 @@ class PhpactorContainerTest extends TestCase
         ]);
     }
 
-    public function testFromExtensions()
+    public function testFromExtensions(): void
     {
         $extension1 = new class implements Extension {
-            public function configure(Resolver $resolver)
+            public function configure(Resolver $resolver): void
             {
                 $resolver->setDefaults([
                     'foo' => 'bar'
                 ]);
             }
 
-            public function load(ContainerBuilder $builder)
+            public function load(ContainerBuilder $builder): void
             {
                 $builder->register('stdclass', function () {
                     return new stdClass();
@@ -57,7 +57,7 @@ class PhpactorContainerTest extends TestCase
         ], $container->getParameter('container.extension_classes'));
     }
 
-    public function testThrowsExceptionForUnknownService()
+    public function testThrowsExceptionForUnknownService(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('No service with ID "foobar" exists');
@@ -65,7 +65,7 @@ class PhpactorContainerTest extends TestCase
         $this->container->get('foobar');
     }
 
-    public function testRetrievesService()
+    public function testRetrievesService(): void
     {
         $this->container->register('foobar', function (Container $container) {
             return new stdClass();
@@ -75,7 +75,7 @@ class PhpactorContainerTest extends TestCase
         $this->assertInstanceOf(stdClass::class, $service);
     }
 
-    public function testRetrievesSameServiceWhenCalledMultipleTimes()
+    public function testRetrievesSameServiceWhenCalledMultipleTimes(): void
     {
         $this->container->register('foobar', function (Container $container) {
             return new stdClass();
@@ -86,7 +86,7 @@ class PhpactorContainerTest extends TestCase
         $this->assertSame($service1, $service2);
     }
 
-    public function testSaysIfItHasAService()
+    public function testSaysIfItHasAService(): void
     {
         $this->container->register('foobar', function (Container $container) {
             return new stdClass();
@@ -96,7 +96,7 @@ class PhpactorContainerTest extends TestCase
         $this->assertFalse($this->container->has('barfoo'));
     }
 
-    public function testReturnsServicesByTag()
+    public function testReturnsServicesByTag(): void
     {
         $this->container->register('foobar', function (Container $container) {
             return new stdClass();
@@ -110,26 +110,26 @@ class PhpactorContainerTest extends TestCase
         ], $serviceIds);
     }
 
-    public function testThrowsExceptionIfParmaeterNotFound()
+    public function testThrowsExceptionIfParmaeterNotFound(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Unknown parameter "foobar", known parameters');
         $this->container->getParameter('foobar');
     }
 
-    public function testReturnsParameter()
+    public function testReturnsParameter(): void
     {
         $result = $this->container->getParameter('configKey1');
         $this->assertEquals('value1', $result);
     }
 
-    public function testReturnsNullParameter()
+    public function testReturnsNullParameter(): void
     {
         $result = $this->container->getParameter('nullKey');
         $this->assertEquals(null, $result);
     }
 
-    public function testBuildReturnsAConfiguredContainer()
+    public function testBuildReturnsAConfiguredContainer(): void
     {
         $container = $this->container->build([
             'hello' => 'goodbye'
@@ -139,7 +139,7 @@ class PhpactorContainerTest extends TestCase
         $this->assertEquals('goodbye', $container->getParameter('hello'));
     }
 
-    public function testReturnsServiceIds()
+    public function testReturnsServiceIds(): void
     {
         $this->container->register('foobar', function (Container $container) {
             return new stdClass();
@@ -148,7 +148,7 @@ class PhpactorContainerTest extends TestCase
         self::assertEquals(['foobar'], $this->container->getServiceIds());
     }
 
-    public function testReturnsTags()
+    public function testReturnsTags(): void
     {
         $this->container->register('foobar', function (Container $container) {
             return new stdClass();
