@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.3 || ^8.0",
-        "phpactor/map-resolver": "^1.4",
+        "phpactor/map-resolver": "dev-allow-enums",
         "psr/container": "^1.0"
     },
     "require-dev": {
@@ -26,6 +26,13 @@
             "dev-master": "2.0.x-dev"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/przepompownia/map-resolver"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Phpactor\\Container\\": "lib/"
