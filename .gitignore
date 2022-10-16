@@ -5,6 +5,6 @@
 /composer.lock
 /.php_cs.cache
 /stubs
-.phpunit.result.cache
+/.phpunit.result.cache
 /.vscode
-.php_cs.cache
+/.php-cs-fixer.cache

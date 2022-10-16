@@ -1,0 +1,42 @@
+<?php
+
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+
+$finder = Finder::create()
+    ->in('lib')
+    ->in('tests')
+    ->exclude([
+    ])
+;
+
+return (new Config())
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR2' => true,
+        'no_unused_imports' => true,
+        'no_superfluous_phpdoc_tags' => [
+            'remove_inheritdoc' => true,
+            'allow_mixed' => true,
+        ],
+        'class_attributes_separation' => [
+            'elements' => [
+                'const' => 'only_if_meta',
+                'property' => 'one',
+                'trait_import' => 'only_if_meta',
+            ],
+        ],
+        'ordered_class_elements' => true,
+        'no_empty_phpdoc' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'void_return' => true,
+        'ordered_class_elements' => true,
+        'single_quote' => true,
+        'heredoc_indentation' => true,
+        'global_namespace_import' => true,
+        'no_trailing_whitespace' => true,
+        'no_whitespace_in_blank_line' => true,
+    ])
+    ->setFinder($finder)
+;
+

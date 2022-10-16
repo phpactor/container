@@ -11,22 +11,22 @@ class PhpactorContainer implements Container, ContainerBuilder
     const PARAM_EXTENSION_CLASSES = 'container.extension_classes';
 
     /**
-     * @var array
+     * @var array<string,array<string,array<string,mixed>>>
      */
     private $tags = [];
 
     /**
-     * @var array
+     * @var array<string,mixed>
      */
     private $parameters = [];
 
     /**
-     * @var array
+     * @var array<string,Closure(Container):mixed>
      */
     private $factories;
 
     /**
-     * @var array
+     * @var list<string>
      */
     private $services = [];
 
@@ -60,9 +60,6 @@ class PhpactorContainer implements Container, ContainerBuilder
         return $container->build($parameters);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function get($id)
     {
         if (isset($this->services[$id])) {
@@ -81,9 +78,7 @@ class PhpactorContainer implements Container, ContainerBuilder
         return $this->services[$id];
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
     public function has($id)
     {
         return array_key_exists($id, $this->factories);
@@ -136,17 +131,11 @@ class PhpactorContainer implements Container, ContainerBuilder
         return $this->parameters;
     }
 
-    /**
-     * @return array<string>
-     */
     public function getServiceIds(): array
     {
         return array_keys($this->factories);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getTags(): array
     {
         return $this->tags;
