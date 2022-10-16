@@ -13,10 +13,8 @@ use Phpactor\Container\Container;
 
 class PhpactorContainerTest extends TestCase
 {
-    /**
-     * @var PhpactorContainer
-     */
-    private $container;
+
+    private PhpactorContainer $container;
 
     public function setUp(): void
     {
