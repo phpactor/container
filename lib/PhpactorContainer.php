@@ -26,15 +26,22 @@ class PhpactorContainer implements Container, ContainerBuilder
     private $factories;
 
     /**
-     * @var list<string>
+     * @var array<string,mixed>
      */
     private $services = [];
 
+    /**
+     * @param array<string,mixed> $parameters
+     */
     public function __construct(array $parameters = [])
     {
         $this->parameters = $parameters;
     }
 
+    /**
+     * @param list<class-string<Extension>> $extensionClasses
+     * @param array<string,mixed> $parameters
+     */
     public static function fromExtensions(array $extensionClasses, array $parameters = []): Container
     {
         $container = new self();
