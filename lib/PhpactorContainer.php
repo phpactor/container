@@ -147,4 +147,9 @@ class PhpactorContainer implements Container, ContainerBuilder
     {
         return $this->tags;
     }
+
+    public function expect(string $id, string $expected): object
+    {
+        return $this->get($id);
+    }
 }

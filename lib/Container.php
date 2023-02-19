@@ -14,6 +14,13 @@ interface Container extends ContainerInterface
     public function get($id);
 
     /**
+     * @template T of object
+     * @param class-string<T> $expected
+     * @return T
+     */
+    public function expect(string $id, string $expected): object;
+
+    /**
      * Return array of serviceId to tag names and attributes
      *
      * @return array<string,array<string,mixed>>

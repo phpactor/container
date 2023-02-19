@@ -72,6 +72,16 @@ class PhpactorContainerTest extends TestCase
         $this->assertInstanceOf(stdClass::class, $service);
     }
 
+    public function testRetrievesExpectedService(): void
+    {
+        $this->container->register('foobar', function (Container $container) {
+            return new stdClass();
+        });
+
+        $service = $this->container->expect('foobar', stdClass::class);
+        $this->assertInstanceOf(stdClass::class, $service);
+    }
+
     public function testRetrievesSameServiceWhenCalledMultipleTimes(): void
     {
         $this->container->register('foobar', function (Container $container) {
