@@ -113,6 +113,9 @@ class PhpactorContainer implements Container, ContainerBuilder
         }
     }
 
+    /**
+     * @deprecated Use parameter() to return a value object instead.
+     */
     public function getParameter(string $name)
     {
         if (!array_key_exists($name, $this->parameters)) {
