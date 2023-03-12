@@ -29,6 +29,7 @@ interface Container extends ContainerInterface
 
     /**
      * @return mixed
+     * @deprecated Use parameter() to return a value object instead.
      */
     public function getParameter(string $name);
 
