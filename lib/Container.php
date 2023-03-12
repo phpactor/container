@@ -32,6 +32,8 @@ interface Container extends ContainerInterface
      */
     public function getParameter(string $name);
 
+    public function parameter(string $name): Parameter;
+
     /**
      * @return array<string,mixed>
      */

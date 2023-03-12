@@ -152,4 +152,9 @@ class PhpactorContainer implements Container, ContainerBuilder
     {
         return $this->get($id);
     }
+
+    public function parameter(string $name): Parameter
+    {
+        return new Parameter($this->getParameter($name));
+    }
 }

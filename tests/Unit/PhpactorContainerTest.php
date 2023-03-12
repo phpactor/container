@@ -130,6 +130,12 @@ class PhpactorContainerTest extends TestCase
         $this->assertEquals('value1', $result);
     }
 
+    public function testReturnsParameterObject(): void
+    {
+        $result = $this->container->parameter('configKey1');
+        $this->assertEquals('value1', $result->value());
+    }
+
     public function testReturnsNullParameter(): void
     {
         $result = $this->container->getParameter('nullKey');
