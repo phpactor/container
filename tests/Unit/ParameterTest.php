@@ -17,6 +17,7 @@ class ParameterTest extends TestCase
         self::assertSame('12', (new Parameter('12'))->string());
         self::assertSame(true, (new Parameter(true))->bool());
         self::assertSame(12.2, (new Parameter(12.2))->float());
+        self::assertSame(12.0, (new Parameter(12))->float());
     }
 
     /**

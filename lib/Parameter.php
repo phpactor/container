@@ -41,6 +41,9 @@ final class Parameter
 
     public function float(): float
     {
+        if (is_int($this->value)) {
+            return (float)$this->value;
+        }
         if (!is_float($this->value)) {
             throw new RuntimeException(sprintf('Value is not a float, it is "%s"', gettype($this->value)));
         }
