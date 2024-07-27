@@ -148,9 +148,31 @@ class PhpactorContainer implements Container, ContainerBuilder
         return $this->tags;
     }
 
+    /**
+     * @template TClass of object
+     * @param class-string<TClass> $expected
+     * @return TClass
+     */
     public function expect(string $id, string $expected): object
     {
-        return $this->get($id);
+        $service = $this->get($id);
+        if (!is_object($service)) {
+            throw new RuntimeException(sprintf(
+                'Expected service `%s` to be an object but got `%s`',
+                $id,
+                get_debug_type($service),
+            ));
+        }
+        if (!$service instanceof $expected) {
+            throw new RuntimeException(sprintf(
+                'Expected service `%s` to be an instance of `%s` but got `%s`',
+                $id,
+                $expected,
+                $service::class
+            ));
+        }
+
+        return $service;
     }
 
     public function parameter(string $name): Parameter

@@ -1,5 +1,2 @@
 parameters:
-    inferPrivatePropertyTypeFromConstructor: true
-    paths:
-        - lib
-    level: 7
+    level: max
