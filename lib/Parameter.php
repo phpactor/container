@@ -49,4 +49,95 @@ final class Parameter
         }
         return $this->value;
     }
+
+    /**
+     * @return list<string>
+     */
+    public function listOfString(): array
+    {
+        return array_map(function (mixed $value) {
+            $this->assertScalar($value);
+            return (string)$value;
+        }, (array)$this->value);
+    }
+
+    /**
+     * @return list<int>
+     */
+    public function listOfInt(): array
+    {
+        return array_map(function (mixed $value) {
+            $this->assertScalar($value);
+            return (int)$value;
+        }, (array)$this->value);
+    }
+
+    /**
+     * @return list<float>
+     */
+    public function listOfFloat(): array
+    {
+        return array_map(function (mixed $value) {
+            $this->assertScalar($value);
+            return (float)$value;
+        }, (array)$this->value);
+    }
+
+    /**
+     * @return list<bool>
+     */
+    public function listOfBool(): array
+    {
+        return array_map(function (mixed $value) {
+            $this->assertScalar($value);
+            return (bool)$value;
+        }, (array)$this->value);
+    }
+
+    public function intOrNull(): ?int
+    {
+        if (null === $this->value) {
+            return null;
+        }
+
+        return $this->int();
+    }
+
+    public function floatOrNull(): ?float
+    {
+        if (null === $this->value) {
+            return null;
+        }
+
+        return $this->float();
+    }
+
+    public function stringOrNull(): ?string
+    {
+        if (null === $this->value) {
+            return null;
+        }
+
+        return $this->string();
+    }
+
+    public function boolOrNull(): ?bool
+    {
+        if (null === $this->value) {
+            return null;
+        }
+
+        return $this->bool();
+    }
+
+    /**
+     * @phpstan-assert scalar $value
+     */
+    private function assertScalar(mixed $value): void
+    {
+        if (!is_scalar($value)) {
+            throw new RuntimeException(sprintf('Value in list is not a scalar, it is an "%s"', gettype($this->value)));
+        }
+    }
+
 }
