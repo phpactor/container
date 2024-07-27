@@ -4,6 +4,7 @@ namespace Phpactor\Container\Tests\Unit;
 
 use Closure;
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Phpactor\Container\Parameter;
 use RuntimeException;
@@ -21,9 +22,9 @@ class ParameterTest extends TestCase
     }
 
     /**
-     * @dataProvider provideCastException
      * @param Closure(Parameter): mixed $invoker
      */
+    #[DataProvider('provideCastException')]
     public function testCastException(mixed $value, Closure $invoker, string $message): void
     {
         $this->expectException(RuntimeException::class);
@@ -35,7 +36,7 @@ class ParameterTest extends TestCase
     /**
      * @return Generator<string,array{mixed,Closure(Parameter): mixed,string}>
      */
-    public function provideCastException(): Generator
+    public static function provideCastException(): Generator
     {
         yield 'not an int' => [
             '12',

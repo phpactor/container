@@ -86,7 +86,7 @@ class PhpactorContainer implements Container, ContainerBuilder
     }
 
 
-    public function has($id)
+    public function has($id): bool
     {
         return array_key_exists($id, $this->factories);
     }
