@@ -31,6 +31,11 @@ class PhpactorContainer implements Container, ContainerBuilder
     private $services = [];
 
     /**
+     * @var array<string>
+     */
+    private array $servicesToResolve = [];
+
+    /**
      * @param array<string,mixed> $parameters
      */
     public function __construct(array $parameters = [])
@@ -80,7 +85,18 @@ class PhpactorContainer implements Container, ContainerBuilder
             ));
         }
 
+        if (in_array($id, $this->servicesToResolve)) {
+            throw new RuntimeException(sprintf(
+                'Circular dependency detected: %s->%s',
+                implode('->', $this->servicesToResolve),
+                $id
+            ));
+        }
+        $this->servicesToResolve[] = $id;
+
         $this->services[$id] = $this->factories[$id]($this);
+
+        $this->servicesToResolve = [];
 
         return $this->services[$id];
     }

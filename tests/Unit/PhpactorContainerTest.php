@@ -62,6 +62,18 @@ class PhpactorContainerTest extends TestCase
         $this->container->get('foobar');
     }
 
+    public function testThrowsExceptionForCircularDependency(): void
+    {
+        $this->container->register('foobar', function (Container $container) {
+            $container->get('foobar');
+        });
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Circular dependency detected: foobar->foobar');
+
+        $this->container->get('foobar');
+    }
+
     public function testRetrievesService(): void
     {
         $this->container->register('foobar', function (Container $container) {
