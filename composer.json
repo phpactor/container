@@ -18,7 +18,7 @@
         "ergebnis/composer-normalize": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpstan/phpstan": "^1.0",
-        "phpunit/phpunit": "^11.0",
+        "phpunit/phpunit": "^10.0",
         "phpspec/prophecy-phpunit": "^2.0"
     },
     "extra": {
